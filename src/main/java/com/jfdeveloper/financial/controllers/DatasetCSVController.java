@@ -1,9 +1,10 @@
 package com.jfdeveloper.financial.controllers;
 
-import com.jfdeveloper.financial.entities.DeveloperTutorial;
+import com.jfdeveloper.financial.entities.Dataset;
 import com.jfdeveloper.financial.helpers.CSVHelper;
 import com.jfdeveloper.financial.helpers.ResponseMessage;
 import com.jfdeveloper.financial.services.CSVService;
+import com.jfdeveloper.financial.services.DatasetCSVService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
@@ -19,11 +20,11 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/csv")
+@RequestMapping("/api/csv/dataset")
 public class DatasetCSVController {
 
     @Autowired
-    CSVService fileService;
+    DatasetCSVService fileService;
 
     @PostMapping("/upload")
     public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
@@ -51,16 +52,16 @@ public class DatasetCSVController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(message,""));
     }
 
-    @GetMapping("/tutorials")
-    public ResponseEntity<List<DeveloperTutorial>> getAllTutorials() {
+    @GetMapping("/all")
+    public ResponseEntity<List<Dataset>> getAllTutorials() {
         try {
-            List<DeveloperTutorial> tutorials = fileService.getAllTutorials();
+            List<Dataset> datasets = fileService.getAllDatasets();
 
-            if (tutorials.isEmpty()) {
+            if (datasets.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
 
-            return new ResponseEntity<>(tutorials, HttpStatus.OK);
+            return new ResponseEntity<>(datasets, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
