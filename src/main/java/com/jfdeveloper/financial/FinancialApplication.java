@@ -10,4 +10,7 @@ public class FinancialApplication {
 		SpringApplication.run(FinancialApplication.class, args);
 	}
 
+
+	// Dataset file:
+    // C:\repository\CapstoneProject\datasets\cc fraud short\bsNET140513_032310.csv
 }

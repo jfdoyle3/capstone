@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Dataset {
+public class DatasetHistory {
 
     // "Source","Target","Weight","typeTrans","fraud"
     @Id
@@ -22,16 +22,18 @@ public class Dataset {
 
     private Integer fraud;
 
-    public Dataset() {
+    public DatasetHistory() {
     }
 
-    public Dataset(String source, String target, Double weight, String typeTrans, Integer fraud) {
+    public DatasetHistory(String source, String target, Double weight, String typeTrans, Integer fraud) {
         this.source = source;
         this.target = target;
         this.weight = weight;
         this.typeTrans = typeTrans;
         this.fraud = fraud;
     }
+
+
 
     public Long getId() {
         return id;
