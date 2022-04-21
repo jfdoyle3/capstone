@@ -20,6 +20,9 @@ spring:
     url: jdbc:mysql://localhost:3306/capstone
     username: username
     password: password
+    platflorm: mysql
+    initialization-mode: always
+
 
   batch:
     initalize-schema: ALWAYS
@@ -30,5 +33,3 @@ spring:
     multipart:
       max-file-size: 2MB
       max-request-size: 2MB
-
-
